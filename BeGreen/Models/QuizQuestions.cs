@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace BeGreen.Models
 {
-    public class User
+    public class QuizQuestions
     {
+        public int Id { get; set; }
+        public string Question { get; set; }
     }
 }
