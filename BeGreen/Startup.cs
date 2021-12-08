@@ -55,6 +55,8 @@ namespace BeGreen
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BeGreen v1"));
             }
 
+            app.UseCors(cfg => cfg.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
