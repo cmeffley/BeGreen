@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BeGreen.Models
+namespace BeGreen.DataAccess
 {
-    public class User
+    public class UserRepository
     {
     }
 }
