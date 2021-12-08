@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BeGreen.DataAccess
 {
-    public class QuizResultsRepository
+    public class UsersRepository
     {
         readonly string _connectionString;
 
-        public QuizResultsRepository(IConfiguration config)
+        public UsersRepository(IConfiguration config)
         {
             _connectionString = config.GetConnectionString("BeGreen");
         }
