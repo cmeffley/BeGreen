@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using BeGreen.Models;
+using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +16,15 @@ namespace BeGreen.DataAccess
         public QuizQuestionsRepository(IConfiguration config)
         {
             _connectionString = config.GetConnectionString("BeGreen");
+        }
+
+        internal IEnumerable<QuizQuestions> GetAll()
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var questions = db.Query<QuizQuestions>(@"Select * From QuizQuestions");
+
+            return questions;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BeGreen.DataAccess;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,5 +12,19 @@ namespace BeGreen.Controllers
     [ApiController]
     public class QuizQuestionsController : ControllerBase
     {
+        QuizQuestionsRepository _repo;
+
+        public QuizQuestionsController(QuizQuestionsRepository repo)
+        {
+            _repo = repo;
+        }
+
+
+        [HttpGet]
+        public IActionResult GetAllQuestions()
+        {
+            return Ok(_repo.GetAll());
+        }
+
     }
 }
