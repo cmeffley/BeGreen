@@ -9,7 +9,7 @@ namespace BeGreen.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public byte Image { get; set; }
+        public byte[] Image { get; set; }
         public int RevealPoints { get; set; }
     }
 }
