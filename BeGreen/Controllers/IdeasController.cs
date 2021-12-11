@@ -58,7 +58,7 @@ namespace BeGreen.Controllers
         public IActionResult DeleteIdea(int id)
         {
             _repo.Delete(id);
-            return Ok("Idea has been permanently deleted");
+            return Ok("Your Idea has been permanently deleted");
         }
     }
 }
