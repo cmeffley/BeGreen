@@ -64,14 +64,9 @@ namespace BeGreen.Controllers
             if (activityToUpdate == null) return NotFound($"Unable to find idea with the id {id} to update");
 
             var updateActivity = _repo.Update(id, activity);
+
             return Ok(updateActivity);
         }
-
-        //[HttpGet("user/{userId}/points")]
-        //public IActionResult GetUsersTotalPoints(int userId)
-        //{
-
-        //}
 
     }
 }
