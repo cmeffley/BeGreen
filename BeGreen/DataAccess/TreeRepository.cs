@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using BeGreen.Models;
+using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +16,28 @@ namespace BeGreen.DataAccess
         public TreeRepository(IConfiguration config)
         {
             _connectionString = config.GetConnectionString("BeGreen");
+        }
+
+        internal IEnumerable<Tree> GetAllTree()
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var wholeTree = db.Query<Tree>(@"Select * From Tree");
+
+            return wholeTree;
+        }
+
+        internal Tree GetSingleTreeImage(int id)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var sql = @"Select *
+                        From Tree
+                        Where id = @id";
+
+            var singleImage = db.QueryFirstOrDefault<Tree>(sql, new { id });
+
+            return singleImage;
         }
     }
 }
