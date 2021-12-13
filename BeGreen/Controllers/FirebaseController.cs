@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BeGreen.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class FirebaseController : ControllerBase
     {
+        public string FirebaseUid => User.FindFirst(claim => claim.Type == "user_id").Value;
     }
 }
