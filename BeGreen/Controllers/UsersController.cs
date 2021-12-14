@@ -41,7 +41,8 @@ namespace BeGreen.Controllers
         {
             var fbUser = _repo.GetUserByFbId(fbUserId);
 
-            if (fbUser == null) return NotFound($"User with the Firebase id {fbUserId} was not found");
+            if (fbUser == null) return Ok(null);
+                    //NotFound($"User with the Firebase id {fbUserId} was not found");
 
             return Ok(fbUser);
         }

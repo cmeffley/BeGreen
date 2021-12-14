@@ -60,7 +60,7 @@ namespace BeGreen.DataAccess
             var sql = @"INSERT INTO [dbo].[Users]
                                    ([firstName]
                                    ,[lastName]
-                                   ,[userName
+                                   ,[userName]
                                    ,[fbUserId]
                                    ,[isAdmin])
                                 Output inserted.id

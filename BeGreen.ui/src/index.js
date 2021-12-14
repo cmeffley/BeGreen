@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import './styles/index.scss';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import firebaseConfig from './helpers/apiKeys';
+import { firebaseConfig } from './helpers/apiKeys';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 firebase.initializeApp(firebaseConfig);
