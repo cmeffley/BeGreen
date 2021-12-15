@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 import { signInUser, signOutUser } from '../helpers/auth';
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -25,22 +25,22 @@ const NavBar = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <Link className="nav-link" to="/about">About</Link>
+              <Link className="nav-link" to="/quiz">Quiz</Link>
             </NavItem>
             <NavItem>
               <Link className="nav-link" to="/users">Users</Link>
             </NavItem>
           </Nav>
-          {/* { user !== null
+          { user !== null
             && <div className='auth-btn-container'>
                 {
                   user ? <Button color='danger' onClick={signOutUser}>Sign Out</Button>
                     : <Button color='info' onClick={signInUser}>Sign In</Button>
                 }
               </div>
-            } */}
-            <Button color='danger' onClick={signOutUser}>Sign Out</Button>
-            <Button color='info' onClick={signInUser}>Sign In</Button>
+            }
+            {/* <Button color='danger' onClick={signOutUser}>Sign Out</Button>
+            <Button color='info' onClick={signInUser}>Sign In</Button> */}
         </Collapse>
       </Navbar>
     </div>
@@ -48,6 +48,5 @@ const NavBar = () => {
 };
 NavBar.propTypes = {
   user: PropTypes.any,
-  setUser: PropTypes.func
 };
 export default NavBar;
