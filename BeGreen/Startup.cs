@@ -1,4 +1,5 @@
 using BeGreen.DataAccess;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -36,7 +38,20 @@ namespace BeGreen
             services.AddTransient<TreeRepository>();
             services.AddTransient<UsersRepository>();
 
-
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+           .AddJwtBearer(options =>
+           {
+               options.IncludeErrorDetails = true;
+               options.Authority = "https://securetoken.google.com/be-green-5c3ed";
+               options.TokenValidationParameters = new TokenValidationParameters
+               {
+                   ValidateLifetime = true,
+                   ValidateAudience = true,
+                   ValidateIssuer = true,
+                   ValidAudience = "be-green-5c3ed",
+                   ValidIssuer = "https://securetoken.google.com/be-green-5c3ed"
+               };
+           });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -60,6 +75,8 @@ namespace BeGreen
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
