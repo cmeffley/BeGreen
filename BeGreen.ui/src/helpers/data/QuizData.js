@@ -15,10 +15,21 @@ const getSingleQuizQuestion = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getAllQuizResults = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/quizResults`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const getSingleQuizResult = (id) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/quizResults/${id}`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
 
-export { getAllQuizQuestions, getSingleQuizQuestion, getSingleQuizResult };
+export {
+  getAllQuizQuestions,
+  getSingleQuizQuestion,
+  getSingleQuizResult,
+  getAllQuizResults
+};
