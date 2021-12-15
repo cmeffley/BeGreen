@@ -20,11 +20,11 @@ function App() {
       }
     });
   }, []);
-
+  console.log(user);
   return (
     <div className='App'>
        <Router>
-        <NavBar user={user} setUser={setUser}/>
+        <NavBar user={user}/>
         <Routes user={user}/>
       </Router>
     </div>
