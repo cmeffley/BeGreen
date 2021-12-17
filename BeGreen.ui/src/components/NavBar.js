@@ -28,7 +28,7 @@ const NavBar = ({ user }) => {
               <Link className="nav-link" to="/quiz">Quiz</Link>
             </NavItem>
             <NavItem>
-              <Link className="nav-link" to="/users">Users</Link>
+              <Link className="nav-link" to="/treeActivity">Activities</Link>
             </NavItem>
           </Nav>
           { user !== null

@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Landing from '../views/Landing';
 import Quiz from '../views/Quiz';
-import Users from '../views/Users';
+import TreeActivity from '../views/TreeViews/TreeActivity';
 
 function Routes({ user }) {
   return (
@@ -11,7 +11,7 @@ function Routes({ user }) {
       <Switch>
         <Route exact path="/" component={() => <Landing user={user} />} />
         <Route exact path="/quiz" component={() => <Quiz user={user} />} />
-        <Route exact path="/users" component={() => <Users user={user} />} />
+        <Route exact path="/treeActivity" component={() => <TreeActivity user={user} />} />
       </Switch>
     </div>
   );
