@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   Button,
   Modal,
@@ -8,22 +9,23 @@ import {
 } from 'reactstrap';
 import TreeActivityCard from '../../components/TreeComponents/TreeActivityCard';
 import TreeActivityForm from '../../components/TreeComponents/TreeActivityForm';
-import { getAllTreeActivities, getTreePictureSection } from '../../helpers/data/TreeData';
+import { getUsersTreeActivities, getTreePictureSection } from '../../helpers/data/TreeData';
 
-function TreeActivity() {
-  const [activity, setActivity] = useState([]);
+function TreeActivity({ user }) {
+  const [userActivity, setUserActivity] = useState([]);
   const [treeSection, setTreeSection] = useState({});
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   useEffect(() => {
-    getAllTreeActivities().then(setActivity);
+    getUsersTreeActivities(user.id).then(setUserActivity);
     getTreePictureSection(3).then(setTreeSection);
   }, []);
 
   return (
     <>
       <h1>Tree Activities</h1>
+      <h2>{userActivity.totalTreePoints}</h2>
       <div>
         <Button onClick={toggle}>Add An Activity</Button>
         <Modal isOpen={modal} toggle={toggle}>
@@ -32,7 +34,12 @@ function TreeActivity() {
           </ModalHeader>
           <ModalBody>
             <TreeActivityForm
-              formTitle={''}/>
+              formTitle={''}
+              user={user}
+              setUserActivity={setUserActivity}
+              userActivity={userActivity}
+              setModal={setModal}
+            />
           <hr />
             <ul>
               <li>1 Point</li>
@@ -48,10 +55,12 @@ function TreeActivity() {
         </Modal>
       </div>
       <div>
-        {activity.map((activityInfo) => (
+        {userActivity.map((activityInfo) => (
           <TreeActivityCard
             key={activityInfo.id}
             {...activityInfo}
+            user={user}
+            setUserActivity={setUserActivity}
           />
         ))}
       </div>
@@ -61,5 +70,9 @@ function TreeActivity() {
     </>
   );
 }
+
+TreeActivity.propTypes = {
+  user: PropTypes.any
+};
 
 export default TreeActivity;

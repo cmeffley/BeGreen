@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 import TreeActivityForm from './TreeActivityForm';
 
-function TreeActivityCard({ ...activityInfo }) {
+function TreeActivityCard({ setUserActivity, ...activityInfo }) {
   const [editActivity, setEditActivity] = useState(false);
 
   return (
@@ -20,6 +20,7 @@ function TreeActivityCard({ ...activityInfo }) {
           formTitle={'Edit Activity'}
           {...activityInfo}
           setEditActivity={setEditActivity}
+          setUserActivity={setUserActivity}
           />
         }
       </Card>
@@ -28,7 +29,8 @@ function TreeActivityCard({ ...activityInfo }) {
 }
 
 TreeActivityCard.propTypes = {
-  activityInfo: PropTypes.obj
+  activityInfo: PropTypes.any,
+  setUserActivity: PropTypes.func
 };
 
 export default TreeActivityCard;
