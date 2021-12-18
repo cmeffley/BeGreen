@@ -16,6 +16,12 @@ const getUsersTreeActivities = (userId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getUserTotalTreePoints = (userId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/treeActivity/totalTreePoints?userId=${userId}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const createNewActivity = (newActivity, userId) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/treeActivity`, newActivity)
     .then(() => {
@@ -48,6 +54,7 @@ const getTreePictureSection = (id) => new Promise((resolve, reject) => {
 export {
   getAllTreeActivities,
   getUsersTreeActivities,
+  getUserTotalTreePoints,
   createNewActivity,
   updateActivity,
   getWholeTreePicture,

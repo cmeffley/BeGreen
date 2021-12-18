@@ -14,6 +14,7 @@ function TreeActivityForm({
   userActivity,
   setUserActivity,
   setModal,
+  revealTree,
   ...activityInfo
 }) {
   const [addActivity, setAddActivity] = useState({
@@ -36,6 +37,7 @@ function TreeActivityForm({
       updateActivity(addActivity.id, addActivity).then((response) => setUserActivity(response));
     } else {
       createNewActivity(addActivity, user.id).then((response) => setUserActivity(response));
+      revealTree();
       setModal(false);
     }
   };
@@ -77,7 +79,8 @@ TreeActivityForm.propTypes = {
   user: PropTypes.any,
   userActivity: PropTypes.array,
   setUserActivity: PropTypes.func,
-  setModal: PropTypes.func
+  setModal: PropTypes.func,
+  revealTree: PropTypes.func
 };
 
 export default TreeActivityForm;
