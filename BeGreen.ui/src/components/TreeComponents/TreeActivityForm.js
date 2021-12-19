@@ -74,7 +74,7 @@ function TreeActivityForm({
 }
 
 TreeActivityForm.propTypes = {
-  activityInfo: PropTypes.any,
+  activityInfo: PropTypes.object,
   formTitle: PropTypes.string,
   user: PropTypes.any,
   userActivity: PropTypes.array,

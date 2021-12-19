@@ -29,7 +29,7 @@ function TreeActivityCard({ setUserActivity, ...activityInfo }) {
 }
 
 TreeActivityCard.propTypes = {
-  activityInfo: PropTypes.any,
+  activityInfo: PropTypes.object,
   setUserActivity: PropTypes.func
 };
 

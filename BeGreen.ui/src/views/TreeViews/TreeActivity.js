@@ -9,25 +9,26 @@ import {
 } from 'reactstrap';
 import TreeActivityCard from '../../components/TreeComponents/TreeActivityCard';
 import TreeActivityForm from '../../components/TreeComponents/TreeActivityForm';
+// import TreePicture from '../../components/TreeComponents/TreePicture';
 import {
   getUsersTreeActivities,
   getUserTotalTreePoints,
   // getTreePictureSection,
-  getWholeTreePicture
+  // getWholeTreePicture
 } from '../../helpers/data/TreeData';
 
-function TreeActivity({ user }) {
+function TreeActivity({ user, wholeTreePicture }) {
   const [userActivity, setUserActivity] = useState([]);
-  const [wholeTreePicture, setWholeTreePicture] = useState([]);
+  // const [wholeTreePicture, setWholeTreePicture] = useState([]);
   // const [treeSection, setTreeSection] = useState({});
   // const [currentPicture, setCurrentPicture] = useState(0);
-  const [treePointsTotal, setTreePointsTotal] = useState();
+  const [treePointsTotal, setTreePointsTotal] = useState(0);
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   useEffect(() => {
     getUsersTreeActivities(user.id).then(setUserActivity);
-    getWholeTreePicture().then(setWholeTreePicture);
+    // getWholeTreePicture().then(setWholeTreePicture);
   }, []);
 
   useEffect(() => {
@@ -36,9 +37,6 @@ function TreeActivity({ user }) {
 
   return (
     <>
-      { wholeTreePicture.map((pic) => (
-        console.log(pic)
-      ))}
       <h1>Tree Activities</h1>
       <h2>{treePointsTotal}</h2>
       <div>
@@ -81,7 +79,16 @@ function TreeActivity({ user }) {
         ))}
       </div>
       <div>
-        {/* {<img src={`data:image/png;base64, ${wholeTreePicture[0].image}`} className='treePictureContainer'/> } */}
+        {wholeTreePicture.map((picInfo) => (
+          console.warn(picInfo)
+          // <TreePicture
+          //   key={picInfo.id}
+          //   {...picInfo}
+          //   treePointsTotal={treePointsTotal}
+          //   user={user}
+          // />
+        ))}
+        {<img src={`data:image/png;base64, ${wholeTreePicture[5].image}`} className='treePictureContainer'/> }
         {/* {<img src={`data:image/png;base64, ${treeSection.image}`} className='treePictureContainer'/> } */}
         {/* {<img src={`data:image/png;base64, ${treeSection.image}`} className='treePictureContainer'/> }
         {<img src={`data:image/png;base64, ${treeSection.image}`} className='treePictureContainer'/> }
@@ -96,7 +103,8 @@ function TreeActivity({ user }) {
 }
 
 TreeActivity.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  wholeTreePicture: PropTypes.array
 };
 
 export default TreeActivity;
