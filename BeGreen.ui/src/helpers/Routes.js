@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Landing from '../views/Landing';
 import Quiz from '../views/Quiz';
 import Users from '../views/Users';
+import IdeasView from '../views/Ideas/IdeasView';
 
 function Routes({ user }) {
   return (
@@ -12,6 +13,7 @@ function Routes({ user }) {
         <Route exact path="/" component={() => <Landing user={user} />} />
         <Route exact path="/quiz" component={() => <Quiz user={user} />} />
         <Route exact path="/users" component={() => <Users user={user} />} />
+        <Route exact path="/ideas" component={() => <IdeasView user={user} />} />
       </Switch>
     </div>
   );

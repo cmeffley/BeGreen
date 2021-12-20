@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import IdeaCard from '../../components/Ideas/IdeaCard';
+import IdeasFeed from '../../components/Ideas/IdeasFeed';
 import { getAllIdeas } from '../../helpers/data/IdeasData';
 
 function IdeasView() {
@@ -13,7 +13,7 @@ function IdeasView() {
     <div>
       <h1>Share Your Ideas!</h1>
       {allIdeas.map((ideasInfo) => (
-        <IdeaCard
+        <IdeasFeed
           key={ideasInfo.id}
           {...ideasInfo}/>
       ))}
