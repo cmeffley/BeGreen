@@ -68,5 +68,17 @@ namespace BeGreen.Controllers
             return Ok(updateActivity);
         }
 
+        [HttpGet("totalTreePoints")]
+        public IActionResult GetTotalTreePoints(int userId)
+        {
+            var userActivities = _repo.GetAllUserIdActivities(userId);
+
+            if (userActivities == null) return NotFound($"No User with the id {userId} was found");
+
+            var userTotalPoints = _repo.GetTotalPoints(userId);
+
+            return Ok(userTotalPoints);
+        }
+
     }
 }
