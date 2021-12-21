@@ -7,10 +7,12 @@ function IdeasFeed({ ...ideasInfo }) {
     <div>
       <Feed>
         <Feed.Event>
-          <Feed.Content>
-            <Feed.Date>{ideasInfo.datePosted}</Feed.Date>
+          <Feed.Label>
             <Feed.User>{ideasInfo.userName}</Feed.User>
+          </Feed.Label>
+          <Feed.Content>
             <Feed.Summary>
+            <Feed.Date>{ideasInfo.datePosted}</Feed.Date>
               {ideasInfo.sharedIdea}
             </Feed.Summary>
           </Feed.Content>
@@ -24,4 +26,4 @@ IdeasFeed.propTypes = {
   ideasInfo: PropTypes.array
 };
 
-export default IdeasFeed();
+export default IdeasFeed;

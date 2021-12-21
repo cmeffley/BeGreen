@@ -27,4 +27,4 @@ function IdeasForm() {
   );
 }
 
-export default IdeasForm();
+export default IdeasForm;

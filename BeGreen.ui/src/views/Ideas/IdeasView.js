@@ -21,4 +21,4 @@ function IdeasView() {
   );
 }
 
-export default IdeasView();
+export default IdeasView;
