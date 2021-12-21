@@ -9,17 +9,17 @@ import {
 } from 'reactstrap';
 import TreeActivityCard from '../../components/TreeComponents/TreeActivityCard';
 import TreeActivityForm from '../../components/TreeComponents/TreeActivityForm';
-// import TreePicture from '../../components/TreeComponents/TreePicture';
+import TreePicture from '../../components/TreeComponents/TreePicture';
 import {
   getUsersTreeActivities,
   getUserTotalTreePoints,
   // getTreePictureSection,
-  // getWholeTreePicture
+  getWholeTreePicture
 } from '../../helpers/data/TreeData';
 
-function TreeActivity({ user, wholeTreePicture }) {
+function TreeActivity({ user }) {
   const [userActivity, setUserActivity] = useState([]);
-  // const [wholeTreePicture, setWholeTreePicture] = useState([]);
+  const [wholeTreePicture, setWholeTreePicture] = useState([]);
   // const [treeSection, setTreeSection] = useState({});
   // const [currentPicture, setCurrentPicture] = useState(0);
   const [treePointsTotal, setTreePointsTotal] = useState(0);
@@ -28,7 +28,7 @@ function TreeActivity({ user, wholeTreePicture }) {
 
   useEffect(() => {
     getUsersTreeActivities(user.id).then(setUserActivity);
-    // getWholeTreePicture().then(setWholeTreePicture);
+    getWholeTreePicture().then(setWholeTreePicture);
   }, []);
 
   useEffect(() => {
@@ -80,15 +80,15 @@ function TreeActivity({ user, wholeTreePicture }) {
       </div>
       <div>
         {wholeTreePicture.map((picInfo) => (
-          console.warn(picInfo)
-          // <TreePicture
-          //   key={picInfo.id}
-          //   {...picInfo}
-          //   treePointsTotal={treePointsTotal}
-          //   user={user}
-          // />
+          // console.warn(picInfo)
+          <TreePicture
+            key={picInfo.id}
+            {...picInfo}
+            treePointsTotal={treePointsTotal}
+            user={user}
+          />
         ))}
-        {<img src={`data:image/png;base64, ${wholeTreePicture[5].image}`} className='treePictureContainer'/> }
+        {/* {<img src={`data:image/png;base64, ${wholeTreePicture[5].image}`} className='treePictureContainer'/> } */}
         {/* {<img src={`data:image/png;base64, ${treeSection.image}`} className='treePictureContainer'/> } */}
         {/* {<img src={`data:image/png;base64, ${treeSection.image}`} className='treePictureContainer'/> }
         {<img src={`data:image/png;base64, ${treeSection.image}`} className='treePictureContainer'/> }
