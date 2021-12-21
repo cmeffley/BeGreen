@@ -37,7 +37,6 @@ function TreeActivityForm({
       updateActivity(addActivity.id, addActivity).then((response) => setUserActivity(response));
     } else {
       createNewActivity(addActivity, user.id).then((response) => setUserActivity(response));
-      revealTree();
       setModal(false);
     }
   };
