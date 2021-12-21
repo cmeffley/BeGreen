@@ -22,7 +22,9 @@ namespace BeGreen.DataAccess
         {
             using var db = new SqlConnection(_connectionString);
 
-            var wholeTree = db.Query<Tree>(@"Select * From Tree");
+            var wholeTree = db.Query<Tree>(@"Select *
+                                            From Tree	
+                                            Order By id DESC");
 
             return wholeTree;
         }
