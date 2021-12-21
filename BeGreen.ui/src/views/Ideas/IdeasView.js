@@ -8,10 +8,14 @@ import { getAllIdeas } from '../../helpers/data/IdeasData';
 function IdeasView({ user }) {
   const [allIdeas, setAllIdeas] = useState([]);
   const [createNewIdea, setCreateNewIdea] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    getAllIdeas().then(setAllIdeas);
-  }, []);
+    const isMounted = true;
+    if (isMounted) {
+      getAllIdeas().then(setAllIdeas);
+    }
+  }, [isSubmitted]);
 
   const openAddClick = () => {
     setCreateNewIdea(!createNewIdea);
@@ -21,20 +25,30 @@ function IdeasView({ user }) {
     <div>
       <h1>Share Your Ideas!</h1>
       <Button primary onClick={openAddClick}>Add A New Idea</Button>
-      <div>
+      <>
+      { createNewIdea
+      && <div>
         <IdeasForm
           formTitle='Add An Idea'
-          setCreateNewIdea={setCreateNewIdea}
           setAllIdeas={setAllIdeas}
+          createNewIdea={createNewIdea}
+          setCreateNewIdea={setCreateNewIdea}
+          isSubmitted={isSubmitted}
+          setIsSubmitted={setIsSubmitted}
           user={user}
         />
       </div>
+      }
+      </>
+      <br />
       <div>
       {allIdeas.map((ideasInfo) => (
         <IdeasFeed
           key={ideasInfo.id}
           {...ideasInfo}
           setAllIdeas={setAllIdeas}
+          isSubmitted={isSubmitted}
+          setIsSubmitted={setIsSubmitted}
           user={user}
         />
       ))}

@@ -15,7 +15,7 @@ const getSingleIdea = (id) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const createNewIdea = (newIdea) => new Promise((resolve, reject) => {
+const addNewIdea = (newIdea) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/ideas`, newIdea)
     .then(() => {
       getAllIdeas().then((response) => resolve(response));
@@ -42,7 +42,7 @@ const deleteIdea = (id) => new Promise((resolve, reject) => {
 export {
   getAllIdeas,
   getSingleIdea,
-  createNewIdea,
+  addNewIdea,
   updateIdea,
   deleteIdea
 };

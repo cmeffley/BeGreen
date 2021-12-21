@@ -6,8 +6,20 @@ import {
   Label,
   Input,
 } from 'reactstrap';
+import { addNewIdea, updateIdea } from '../../helpers/data/IdeasData';
 
-function IdeasForm({ user, formTitle, ...ideasInfo }) {
+function IdeasForm({
+  user,
+  formTitle,
+  isSubmitted,
+  setIsSubmitted,
+  createNewIdea,
+  setCreateNewIdea,
+  editIdea,
+  setEditIdea,
+  setAllIdeas,
+  ...ideasInfo
+}) {
   const [newIdea, setNewIdea] = useState({
     sharedIdea: ideasInfo?.sharedIdea || '',
     image: ideasInfo?.image || '',
@@ -28,6 +40,14 @@ function IdeasForm({ user, formTitle, ...ideasInfo }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (ideasInfo.id) {
+      updateIdea(newIdea.id, newIdea).then(setAllIdeas);
+      setEditIdea(false);
+    } else {
+      addNewIdea(newIdea).then(setAllIdeas);
+      setCreateNewIdea(!createNewIdea);
+    }
+    setIsSubmitted(!isSubmitted);
   };
 
   return (
@@ -59,7 +79,14 @@ function IdeasForm({ user, formTitle, ...ideasInfo }) {
 IdeasForm.propTypes = {
   ideasInfo: PropTypes.object,
   user: PropTypes.any,
-  formTitle: PropTypes.string
+  formTitle: PropTypes.string,
+  setAllIdeas: PropTypes.func,
+  setIsSubmitted: PropTypes.func,
+  isSubmitted: PropTypes.bool,
+  createNewIdea: PropTypes.bool,
+  setCreateNewIdea: PropTypes.func,
+  editIdea: PropTypes.bool,
+  setEditIdea: PropTypes.func
 };
 
 export default IdeasForm;

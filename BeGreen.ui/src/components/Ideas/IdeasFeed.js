@@ -4,7 +4,13 @@ import { Feed, Button } from 'semantic-ui-react';
 import IdeasForm from './IdeasForm';
 import { deleteIdea } from '../../helpers/data/IdeasData';
 
-function IdeasFeed({ user, setAllIdeas, ...ideasInfo }) {
+function IdeasFeed({
+  user,
+  setAllIdeas,
+  isSubmitted,
+  setIsSubmitted,
+  ...ideasInfo
+}) {
   const [editIdea, setEditIdea] = useState(false);
 
   const handleClick = (type) => {
@@ -33,12 +39,16 @@ function IdeasFeed({ user, setAllIdeas, ...ideasInfo }) {
               {ideasInfo.sharedIdea}
             </Feed.Summary>
           </Feed.Content>
-          <Button primary onClick={() => handleClick('edit')}>Edit</Button>
-          <Button secondary onClick={() => handleClick('delete')}>Delete</Button>
+          { (user.id === ideasInfo.userId) ? <Button primary onClick={() => handleClick('edit')}>Edit</Button> : '' }
+          { (user.id === ideasInfo.userId) ? <Button secondary onClick={() => handleClick('delete')}>Delete</Button> : '' }
           {
             editIdea && <IdeasForm
               formTitle='Edit Idea'
               {...ideasInfo}
+              editIdea={editIdea}
+              setEditIdea={setEditIdea}
+              isSubmitted={isSubmitted}
+              setIsSubmitted={setIsSubmitted}
               user={user}
             />
           }
@@ -51,6 +61,8 @@ function IdeasFeed({ user, setAllIdeas, ...ideasInfo }) {
 IdeasFeed.propTypes = {
   ideasInfo: PropTypes.array,
   setAllIdeas: PropTypes.func,
+  isSubmitted: PropTypes.bool,
+  setIsSubmitted: PropTypes.func,
   user: PropTypes.any
 };
 
