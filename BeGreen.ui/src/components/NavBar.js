@@ -8,8 +8,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  Button,
 } from 'reactstrap';
+import { Icon } from 'semantic-ui-react';
 import { signInUser, signOutUser } from '../helpers/auth';
 
 const NavBar = ({ user }) => {
@@ -41,13 +41,11 @@ const NavBar = ({ user }) => {
           { user !== null
             && <div className='auth-btn-container'>
                 {
-                  user ? <Button color='danger' onClick={signOutUser}>Sign Out</Button>
-                    : <Button color='info' onClick={signInUser}>Sign In</Button>
+                  user ? <Icon name='sign-out' size='large' inverted color='grey' onClick={signOutUser}></Icon>
+                    : <Icon name='sign-in' size='large' inverted color='grey' onClick={signInUser}></Icon>
                 }
               </div>
             }
-            {/* <Button color='danger' onClick={signOutUser}>Sign Out</Button>
-            <Button color='info' onClick={signInUser}>Sign In</Button> */}
         </Collapse>
       </Navbar>
     </div>

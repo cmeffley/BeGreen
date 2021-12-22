@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Feed, Button } from 'semantic-ui-react';
+import { Feed, Button, Icon } from 'semantic-ui-react';
 import IdeasForm from './IdeasForm';
 import { deleteIdea } from '../../helpers/data/IdeasData';
 
@@ -28,17 +28,24 @@ function IdeasFeed({
 
   return (
     <div>
-      <Feed>
+      <Feed size='large' className='feed'>
         <Feed.Event>
-          <Feed.Label>
-            <Feed.User>{ideasInfo.userName}</Feed.User>
-          </Feed.Label>
+          <Feed.Label><Icon name='pencil'/></Feed.Label>
           <Feed.Content>
+            <Feed.User>{ideasInfo.userName}</Feed.User>
             <Feed.Summary>
-            <Feed.Date>{ideasInfo.datePosted}</Feed.Date>
-              {ideasInfo.sharedIdea}
+              <Feed.Extra text>
+                {ideasInfo.sharedIdea}
+              </Feed.Extra>
             </Feed.Summary>
+            <Feed.Extra images>
+              {<img src={ideasInfo.image}/>}
+            </Feed.Extra>
+            <Feed.Meta>
+            <Feed.Date>{ideasInfo.datePosted}</Feed.Date>
+            </Feed.Meta>
           </Feed.Content>
+          </Feed.Event>
           { (user.id === ideasInfo.userId) ? <Button primary onClick={() => handleClick('edit')}>Edit</Button> : '' }
           { (user.id === ideasInfo.userId) ? <Button secondary onClick={() => handleClick('delete')}>Delete</Button> : '' }
           {
@@ -53,8 +60,8 @@ function IdeasFeed({
               user={user}
             />
           }
-        </Feed.Event>
       </Feed>
+      <br />
     </div>
   );
 }
