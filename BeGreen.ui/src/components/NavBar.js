@@ -20,7 +20,7 @@ const NavBar = ({ user }) => {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/">Home</NavbarBrand>
+        <NavbarBrand href="/"><Icon name='tree'/></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>

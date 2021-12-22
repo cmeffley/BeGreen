@@ -65,7 +65,7 @@ function TreeActivity({ user }) {
             </ul>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={toggle}>Close</Button>
+            <Button color='success' onClick={toggle}>Close</Button>
           </ModalFooter>
         </Modal>
       </div>

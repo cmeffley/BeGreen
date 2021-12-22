@@ -46,8 +46,8 @@ function IdeasFeed({
             </Feed.Meta>
           </Feed.Content>
           </Feed.Event>
-          { (user.id === ideasInfo.userId) ? <Button primary onClick={() => handleClick('edit')}>Edit</Button> : '' }
-          { (user.id === ideasInfo.userId) ? <Button secondary onClick={() => handleClick('delete')}>Delete</Button> : '' }
+          { (user.id === ideasInfo.userId) ? <Button icon secondary onClick={() => handleClick('edit')}>{ editIdea ? <Icon inverted name='close'/> : <Icon name='edit'/> }</Button> : '' }
+          { (user.id === ideasInfo.userId) ? <Button icon secondary onClick={() => handleClick('delete')}><Icon name='trash alternate'/></Button> : '' }
           {
             editIdea && <IdeasForm
               formTitle='Edit Idea'

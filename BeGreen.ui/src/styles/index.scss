@@ -2,11 +2,12 @@
 @import 'variables';
 
 body {
-  background-color: $favColor;
+  background-color: #386641 !important;
+  // color: #F2E8CF !important
 }
 
 .treePictureContainer {
-  border: 1px red solid;
+  // border: 1px red solid;
   height: auto;
   width: auto;
 }
