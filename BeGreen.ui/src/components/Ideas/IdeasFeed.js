@@ -45,6 +45,7 @@ function IdeasFeed({
             editIdea && <IdeasForm
               formTitle='Edit Idea'
               {...ideasInfo}
+              setAllIdeas={setAllIdeas}
               editIdea={editIdea}
               setEditIdea={setEditIdea}
               isSubmitted={isSubmitted}
