@@ -97,5 +97,19 @@ namespace BeGreen.DataAccess
 
             return updatedActivity;
         }
+
+        internal int GetTotalPoints(int userId)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var sql = @"Select TOP 1 totalTreePoints
+                        From TreeActivity
+                        Where userId = @userId
+                        Order By totalTreePoints DESC";
+
+            var totalTreePoints = db.ExecuteScalar<int>(sql, new { userId });
+
+            return totalTreePoints;
+        }
     }
 }

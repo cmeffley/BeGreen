@@ -60,11 +60,12 @@ namespace BeGreen.DataAccess
             var sql = @"INSERT INTO [dbo].[Users]
                                    ([firstName]
                                    ,[lastName]
+                                   ,[userName]
                                    ,[fbUserId]
                                    ,[isAdmin])
                                 Output inserted.id
                              VALUES
-                                   (@firstName, @lastName, @fbUserId, @isAdmin)";
+                                   (@firstName, @lastName, @userName, @fbUserId, @isAdmin)";
 
             var id = db.ExecuteScalar<int>(sql, user);
 

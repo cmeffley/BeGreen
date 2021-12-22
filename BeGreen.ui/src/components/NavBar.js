@@ -25,26 +25,35 @@ const NavBar = ({ user }) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <Link className="nav-link" to="/about">About</Link>
+              <Link className="nav-link" to="/quiz">Quiz</Link>
+            </NavItem>
+          { user
+            && <>
+            <NavItem>
+              <Link className="nav-link" to="/treeActivity">Activities</Link>
             </NavItem>
             <NavItem>
-              <Link className="nav-link" to="/users">Users</Link>
+              <Link className="nav-link" to="/ideas">Share Ideas</Link>
             </NavItem>
+            </>
+          }
           </Nav>
           { user !== null
             && <div className='auth-btn-container'>
                 {
-                  user ? <Button color='danger' onClick={signOutUser}>SignOut?</Button>
-                    : <Button color='info' onClick={signInUser}>SignIN!</Button>
+                  user ? <Button color='danger' onClick={signOutUser}>Sign Out</Button>
+                    : <Button color='info' onClick={signInUser}>Sign In</Button>
                 }
               </div>
             }
+            {/* <Button color='danger' onClick={signOutUser}>Sign Out</Button>
+            <Button color='info' onClick={signInUser}>Sign In</Button> */}
         </Collapse>
       </Navbar>
     </div>
   );
 };
 NavBar.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
 };
 export default NavBar;

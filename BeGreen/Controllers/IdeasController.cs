@@ -44,7 +44,7 @@ namespace BeGreen.Controllers
             return Created($"ideas/{idea.Id}", idea);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateIdea(int id, Ideas idea)
         {
             var ideaToUpdate = _repo.GetById(id);
