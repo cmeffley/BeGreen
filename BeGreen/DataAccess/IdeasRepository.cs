@@ -47,11 +47,12 @@ namespace BeGreen.DataAccess
             var sql = @"INSERT INTO [dbo].[Ideas]
                                    ([sharedIdea]
                                    ,[image]
-                                   ,[userFirstName]
+                                   ,[UserFirstName]
+                                   ,[UserName]
                                    ,[userId])
 		                        output inserted.Id
                             VALUES
-                                (@sharedIdea, @image, @userFirstName, @userId)";
+                                (@sharedIdea, @image, @UserFirstName, @UserName, @userId)";
             var id = db.ExecuteScalar<int>(sql, idea);
 
             idea.Id = id;
@@ -64,7 +65,8 @@ namespace BeGreen.DataAccess
             var sql = @"UPDATE [dbo].[Ideas]
                            SET [sharedIdea] = @sharedIdea
                               ,[image] = @image
-                              ,[userFirstName] = @userFirstName
+                              ,[UserFirstName] = @UserFirstName
+                              ,[UserName] = @UserName
                               ,[userId] = @userId
                            Output inserted.*
                               Where Id = @id";

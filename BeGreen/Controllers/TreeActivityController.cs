@@ -56,7 +56,7 @@ namespace BeGreen.Controllers
             return Created($"treeActivity/{activity.Id}", activity);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult UpdateActivity(int id, TreeActivity activity)
         {
             var activityToUpdate = _repo.GetSingleActivityById(id);
