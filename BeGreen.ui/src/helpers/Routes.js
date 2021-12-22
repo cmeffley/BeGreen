@@ -5,6 +5,7 @@ import Landing from '../views/Landing';
 import Quiz from '../views/Quiz';
 import IdeasView from '../views/Ideas/IdeasView';
 import TreeActivity from '../views/TreeViews/TreeActivity';
+import PrivateRoute from './PrivateRoute';
 
 function Routes({ user }) {
   return (
@@ -12,8 +13,8 @@ function Routes({ user }) {
       <Switch>
         <Route exact path="/" component={() => <Landing user={user} />} />
         <Route exact path="/quiz" component={() => <Quiz user={user} />} />
-        <Route exact path="/ideas" component={() => <IdeasView user={user} />} />
-        <Route exact path="/treeActivity" component={() => <TreeActivity user={user} />} />
+        <PrivateRoute exact path="/ideas" user={user} component={() => <IdeasView user={user} />} />
+        <PrivateRoute exact path="/treeActivity" user={user} component={() => <TreeActivity user={user} />} />
       </Switch>
     </div>
   );
