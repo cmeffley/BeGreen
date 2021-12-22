@@ -33,7 +33,9 @@ function TreeActivityForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (activityInfo.id) {
+    if (addActivity.treePoints > 5) {
+      window.alert('Points cannot be greater than 5');
+    } else if (activityInfo.id) {
       updateActivity(addActivity.id, addActivity).then((response) => setUserActivity(response));
     } else {
       createNewActivity(addActivity, user.id).then((response) => setUserActivity(response));
