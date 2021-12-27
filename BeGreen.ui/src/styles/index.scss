@@ -2,12 +2,23 @@
 @import 'variables';
 
 body {
+  margin: 0;
   background-color: #386641 !important;
   // color: #F2E8CF !important
 }
 
+.quizCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25rem;
+  height: 25rem;
+  font-size: large;
+  background-color: #F2E8CF !important;
+  box-shadow: 4px 4px 5px black;
+}
+
 .treePictureContainer {
-  // border: 1px red solid;
   height: auto;
   width: auto;
 }

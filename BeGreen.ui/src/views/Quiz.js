@@ -1,13 +1,33 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import {
   Card,
-  // CardText,
-  // CardBody,
+  CardBody,
   CardTitle,
   Button,
-  ButtonGroup
+  // ButtonGroup
 } from 'reactstrap';
 import { getAllQuizQuestions, getAllQuizResults, getSingleQuizResult } from '../helpers/data/QuizData';
+
+const QuizContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  // position: absolute;
+  // bottom: 0;
+`;
+
+const QuizButton = styled.button`
+  background-color: #BC4749;
+
+  &:hover {
+    background-color: #A7C957;
+  }
+`;
 
 function Quiz() {
   const [allQuestions, setAllQuestions] = useState([]);
@@ -61,29 +81,35 @@ function Quiz() {
   return (
     <>
       <h1>Welcome To The Quiz Page</h1>
-      <Card>
+      <QuizContainer>
+      <Card className='quizCard'>
+        <CardBody>
         <CardTitle>{singleQuestion.question}</CardTitle>
-        <ButtonGroup>
-          <Button
+        <ButtonContainer>
+        {/* <ButtonGroup> */}
+          <QuizButton
             disabled={startOver === true}
             value={3}
             onClick={handleClick}>
             Yes
-          </Button>
-          <Button
+          </QuizButton>
+          <QuizButton
             disabled={startOver === true}
             value={1}
             onClick={handleClick}>
             Sometimes
-          </Button>
-          <Button
+          </QuizButton>
+          <QuizButton
             disabled={startOver === true}
             value={0}
             onClick={handleClick}>
             No
-          </Button>
-        </ButtonGroup>
+          </QuizButton>
+        {/* </ButtonGroup> */}
+        </ButtonContainer>
+        </CardBody>
       </Card>
+      </QuizContainer>
       {startOver ? singleResult.result : ''}
       <br />
       {startOver ? <Button onClick={tryAgain}>Try Again</Button> : ''}
