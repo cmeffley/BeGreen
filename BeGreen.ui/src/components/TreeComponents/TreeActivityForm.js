@@ -5,6 +5,8 @@ import {
   Form,
   Label,
   Input,
+  Toast,
+  ToastBody
 } from 'reactstrap';
 import { createNewActivity, updateActivity } from '../../helpers/data/TreeData';
 
@@ -23,6 +25,8 @@ function TreeActivityForm({
     totalTreePoints: Number(activityInfo?.totalTreePoints) || Number(''),
     userId: activityInfo?.userId || user.id
   });
+  const [toast, setToast] = useState(false);
+  const toggle = () => setToast(!toast);
 
   const handleInputChange = (e) => {
     setAddActivity((prevState) => ({
@@ -34,7 +38,7 @@ function TreeActivityForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (addActivity.treePoints > 5) {
-      window.alert('Points cannot be greater than 5');
+      toggle();
     } else if (activityInfo.id) {
       updateActivity(addActivity.id, addActivity).then((response) => setUserActivity(response));
     } else {
@@ -46,7 +50,12 @@ function TreeActivityForm({
   return (
     <div>
       <h1>{formTitle}</h1>
-      {activityInfo.id}
+      {/* {activityInfo.id} */}
+      <Toast toggle={toggle}>
+        <ToastBody toggle={toggle}>
+          {'Points cannot be greater than 5'}
+        </ToastBody>
+      </Toast>
       <Form
         autoComplete='off'
         onSubmit={handleSubmit}

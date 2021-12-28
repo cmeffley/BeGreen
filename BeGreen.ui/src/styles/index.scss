@@ -31,6 +31,19 @@ body {
   box-shadow: 4px 4px 5px black;
 }
 
+.activityCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 12rem;
+  height: 12rem;
+  font-size: large;
+  font-weight: bold;
+  background-color: #F2E8CF !important;
+  opacity: .5;
+  // margin: 10px 0px 10px 15px;
+}
+
 .treePictureContainer {
   height: auto;
   width: auto;

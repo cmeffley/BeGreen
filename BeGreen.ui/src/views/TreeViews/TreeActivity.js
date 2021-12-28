@@ -2,12 +2,13 @@
 /* eslint-disable array-callback-return */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
   Button,
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
 } from 'reactstrap';
 import TreeActivityCard from '../../components/TreeComponents/TreeActivityCard';
 import TreeActivityForm from '../../components/TreeComponents/TreeActivityForm';
@@ -17,6 +18,29 @@ import {
   getUserTotalTreePoints,
   getWholeTreePicture
 } from '../../helpers/data/TreeData';
+
+// const ComponentDiv = styled.div`
+//   position: relative;
+// `;
+
+const CardDiv = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+  // justify-content: space-evenly;
+  height: 200vh;
+  position: relative;
+  z-index: 2;
+  border: solid pink 2px;
+`;
+
+const TreeDiv = styled.div`
+  position: absolute;
+  z-index: 1;
+  height: 100vh;
+  border: solid yellow 2px;
+  top: 50%;
+  right: 30%;
+`;
 
 function TreeActivity({ user }) {
   const [userActivity, setUserActivity] = useState([]);
@@ -39,7 +63,7 @@ function TreeActivity({ user }) {
 
   return (
     <>
-      <h1>Tree Activities</h1>
+      <h1>{user.firstName}&apos;s Activities</h1>
       <h2>{treePointsTotal}</h2>
       <div>
         <Button onClick={toggle}>Add An Activity</Button>
@@ -69,7 +93,7 @@ function TreeActivity({ user }) {
           </ModalFooter>
         </Modal>
       </div>
-      <div>
+      <CardDiv>
         {userActivity.length <= 0 ? 'Add an Activity, Earn Points, See what grows' : userActivity.map((activityInfo) => (
           <TreeActivityCard
             key={activityInfo.id}
@@ -78,8 +102,8 @@ function TreeActivity({ user }) {
             setUserActivity={setUserActivity}
           />
         ))}
-      </div>
-      <div>
+      </CardDiv>
+      <TreeDiv>
         {wholeTreePicture.map((picInfo) => {
           if (treePointsTotal >= picInfo.revealPoints) {
             return (
@@ -90,7 +114,7 @@ function TreeActivity({ user }) {
             );
           }
         })}
-      </div>
+      </TreeDiv>
     </>
   );
 }
