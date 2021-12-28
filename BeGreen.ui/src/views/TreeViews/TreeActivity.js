@@ -65,12 +65,12 @@ function TreeActivity({ user }) {
             </ul>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={toggle}>Close</Button>
+            <Button color='success' onClick={toggle}>Close</Button>
           </ModalFooter>
         </Modal>
       </div>
       <div>
-        {userActivity.map((activityInfo) => (
+        {userActivity.length <= 0 ? 'Add an Activity, Earn Points, See what grows' : userActivity.map((activityInfo) => (
           <TreeActivityCard
             key={activityInfo.id}
             {...activityInfo}

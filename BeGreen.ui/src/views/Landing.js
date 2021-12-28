@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import { Button } from 'semantic-ui-react';
 import { signInUser, signOutUser } from '../helpers/auth';
 
 function Landing({ user }) {
@@ -13,9 +13,9 @@ function Landing({ user }) {
       <h6>Help the World, take a quiz to see if you&apos;re everyday habits are helpful or harmful.</h6>
       <h6>Sign In to share Green Ideas with others and use those ideas in the activities area to create something!</h6>
       <div>
-        { user ? <Button color='danger' onClick={signOutUser}>Sign Out</Button>
-          : <Button color='success' onClick={signInUser}>Sign In</Button>}
-        <Button color='secondary' onClick={() => history.push('/quiz')}>Take Quiz</Button>
+        { user ? <Button inverted color='red' onClick={signOutUser}>Sign Out</Button>
+          : <Button inverted color='teal' onClick={signInUser}>Sign In</Button>}
+        <Button inverted color='green' onClick={() => history.push('/quiz')}>Take Quiz</Button>
       </div>
     </>
   );

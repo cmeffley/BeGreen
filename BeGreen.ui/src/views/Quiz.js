@@ -1,13 +1,42 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import {
   Card,
-  // CardText,
-  // CardBody,
+  CardBody,
   CardTitle,
-  Button,
-  ButtonGroup
 } from 'reactstrap';
 import { getAllQuizQuestions, getAllQuizResults, getSingleQuizResult } from '../helpers/data/QuizData';
+import { signInUser } from '../helpers/auth';
+
+const QuizContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const AnswerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 24%;
+`;
+
+const QuizButton = styled.button`
+  background-color: #BC4749;
+  padding: ${(props) => props.btnSizeP || ''};
+  margin: ${(props) => props.btnSizeM || ''};
+  font-size: ${(props) => props.textSize || ''};
+
+  &:hover {
+    background-color: ${(props) => props.btnColor || '#A7C957'};
+  }
+`;
 
 function Quiz() {
   const [allQuestions, setAllQuestions] = useState([]);
@@ -17,6 +46,7 @@ function Quiz() {
   const [allResults, setAllResults] = useState([]);
   const [singleResult, setSingleResult] = useState({});
   const [startOver, setStartOver] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     getAllQuizQuestions().then((questions) => {
@@ -58,35 +88,60 @@ function Quiz() {
     setStartOver(false);
   };
 
+  const signInAndGo = () => {
+    signInUser();
+    history.push('/');
+  };
+
   return (
     <>
-      <h1>Welcome To The Quiz Page</h1>
-      <Card>
+      <h1 style={{ color: '#fff' }}>How Environmentally Friendly Are You?</h1>
+      <h2 style={{ color: '#fff' }}>Take the Quiz and Find Out!</h2>
+      <br />
+      <br />
+      <QuizContainer>
+      <Card className='quizCard'>
+        <CardBody>
         <CardTitle>{singleQuestion.question}</CardTitle>
-        <ButtonGroup>
-          <Button
+        <ButtonContainer>
+          <QuizButton
             disabled={startOver === true}
             value={3}
             onClick={handleClick}>
             Yes
-          </Button>
-          <Button
+          </QuizButton>
+          <QuizButton
             disabled={startOver === true}
             value={1}
             onClick={handleClick}>
             Sometimes
-          </Button>
-          <Button
+          </QuizButton>
+          <QuizButton
             disabled={startOver === true}
             value={0}
             onClick={handleClick}>
             No
-          </Button>
-        </ButtonGroup>
+          </QuizButton>
+        </ButtonContainer>
+        </CardBody>
       </Card>
-      {startOver ? singleResult.result : ''}
+      </QuizContainer>
       <br />
-      {startOver ? <Button onClick={tryAgain}>Try Again</Button> : ''}
+      <AnswerContainer>
+        { startOver
+          ? <Card className='answerCard'>
+        <CardBody>
+          {singleResult.result}
+        </CardBody>
+        </Card>
+          : ''}
+      </AnswerContainer>
+      <br />
+      {startOver ? <QuizButton btnColor='#BC4749' btnSizeP='10px' textSize='large' btnSizeM='15px'
+      onClick={tryAgain}>Try Again</QuizButton> : ''}
+      {startOver ? <h5 style={{ color: '#fff' }}>OR</h5> : '' }
+      {startOver ? <QuizButton btnColor='#BC4749' btnSizeP='10px' textSize='large' btnSizeM='15px'
+      onClick={signInAndGo}>Click To Experience More!</QuizButton> : ''}
     </>
   );
 }

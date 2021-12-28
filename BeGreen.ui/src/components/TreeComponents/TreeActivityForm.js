@@ -68,7 +68,7 @@ function TreeActivityForm({
             onChange={handleInputChange}
           />
           <br />
-        <Button type='submit'>Submit</Button>
+        <Button color='success' type='submit'>Submit</Button>
       </Form>
     </div>
   );
