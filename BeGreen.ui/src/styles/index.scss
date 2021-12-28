@@ -12,9 +12,22 @@ body {
   flex-direction: column;
   justify-content: space-between;
   width: 25rem;
-  height: 25rem;
+  height: 15rem;
   font-size: large;
+  font-weight: bold;
   background-color: #F2E8CF !important;
+  box-shadow: 4px 4px 5px black;
+}
+
+.answerCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 15rem;
+  height: 15rem;
+  font-size: large;
+  font-weight: bold;
+  background-color: #A7C957 !important;
   box-shadow: 4px 4px 5px black;
 }
 

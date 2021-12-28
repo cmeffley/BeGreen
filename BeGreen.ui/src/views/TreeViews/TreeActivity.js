@@ -70,7 +70,7 @@ function TreeActivity({ user }) {
         </Modal>
       </div>
       <div>
-        {userActivity.map((activityInfo) => (
+        {userActivity.length <= 0 ? 'Add an Activity, Earn Points, See what grows' : userActivity.map((activityInfo) => (
           <TreeActivityCard
             key={activityInfo.id}
             {...activityInfo}
