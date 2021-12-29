@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
   Button,
   Form,
-  Label,
   Input,
 } from 'reactstrap';
 import { addNewIdea, updateIdea } from '../../helpers/data/IdeasData';
+
+const FormDiv = styled.div`
+  margin: 20px auto;
+  width: 50%;
+  // text-align: center;
+`;
 
 function IdeasForm({
   user,
@@ -52,26 +58,31 @@ function IdeasForm({
 
   return (
     <div>
-      <h1>{formTitle}</h1>
+      <br />
+      <h2 style={{ color: '#fff' }}>{formTitle}</h2>
+      <FormDiv>
       <Form
         autoComplete='off'
         onSubmit={handleSubmit}
       >
-        <Label>Add a Green Idea that Others can Do!</Label>
-          <Input
-            name='sharedIdea'
-            value={newIdea.sharedIdea}
-            onChange={handleInputChange}
-            required
-          />
-        <Label>Add an Image if you want</Label>
-          <Input
-            name='image'
-            value={newIdea.image}
-            onChange={handleInputChange}
-          />
+        <Input
+          placeholder='Add a Green Idea that Others can Do!'
+          name='sharedIdea'
+          value={newIdea.sharedIdea}
+          onChange={handleInputChange}
+          required
+        />
+        <br />
+        <Input
+          placeholder='Add an Image if you would like'
+          name='image'
+          value={newIdea.image}
+          onChange={handleInputChange}
+        />
+        <br />
         <Button type='submit'>Submit</Button>
       </Form>
+      </FormDiv>
     </div>
   );
 }

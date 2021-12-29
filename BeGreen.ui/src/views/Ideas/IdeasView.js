@@ -23,8 +23,10 @@ function IdeasView({ user }) {
 
   return (
     <div>
-      <h1>Share Your Ideas!</h1>
+      <h1 style={{ color: '#fff' }}>Share Your Ideas!</h1>
+      <br />
       <Button primary onClick={openAddClick}>Add A New Idea</Button>
+      <br />
       <>
       { createNewIdea
       && <div>

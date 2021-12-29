@@ -30,7 +30,7 @@ function IdeasFeed({
     <div>
       <Feed size='large' className='feed'>
         <Feed.Event>
-          <Feed.Label><Icon name='pencil'/></Feed.Label>
+          <Feed.Label><Icon name='comment outline'/></Feed.Label>
           <Feed.Content>
             <Feed.User>{ideasInfo.userName}</Feed.User>
             <Feed.Summary>
