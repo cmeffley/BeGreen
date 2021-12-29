@@ -14,15 +14,6 @@ body {
   color: #fff !important;
 }
 
-.explain {
-  display: flex;
-  flex-flow: row wrap;
-  // justify-content: center;
-  height: 20vh;
-  width: 50%;
-  border: solid hotpink 2px; 
-}
-
 .quizCard {
   display: flex;
   flex-direction: column;
@@ -39,8 +30,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 15rem;
-  height: 15rem;
+  width: 18rem;
+  height: 18rem;
   font-size: large;
   font-weight: bold;
   background-color: #A7C957 !important;
@@ -51,8 +42,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 10rem;
-  height: 10rem;
+  width: 11rem;
+  height: 11rem;
+  padding: 1px;
   font-size: large;
   font-weight: bold;
   background-color: #F2E8CF !important;
