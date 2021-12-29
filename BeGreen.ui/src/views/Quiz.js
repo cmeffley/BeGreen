@@ -32,6 +32,7 @@ const QuizButton = styled.button`
   padding: ${(props) => props.btnSizeP || ''};
   margin: ${(props) => props.btnSizeM || ''};
   font-size: ${(props) => props.textSize || ''};
+  border-radius: 5px;
 
   &:hover {
     background-color: ${(props) => props.btnColor || '#A7C957'};

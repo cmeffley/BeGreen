@@ -10,7 +10,7 @@ import {
 import TreeActivityForm from './TreeActivityForm';
 
 const CardDiv = styled.div`
-  border: solid red 3px;
+  border: solid black 1px;
   margin: 10px 15px 10px 15px;
 `;
 
