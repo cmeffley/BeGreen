@@ -2,12 +2,12 @@
 /* eslint-disable array-callback-return */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
 } from 'reactstrap';
 import TreeActivityCard from '../../components/TreeComponents/TreeActivityCard';
 import TreeActivityForm from '../../components/TreeComponents/TreeActivityForm';
@@ -17,6 +17,34 @@ import {
   getUserTotalTreePoints,
   getWholeTreePicture
 } from '../../helpers/data/TreeData';
+
+const CardDiv = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  // justify-content: space-evenly;
+  // height: 225vh;
+  // width: 115vh;
+  // position: relative;
+  // z-index: 2;
+  // border: solid pink 2px;
+`;
+
+const ActivityButtons = styled.button`
+  background-color: #BC4749;
+  padding: 7px 10px;
+  margin: 3px;
+  color: #fff;
+  border-radius: 10px;
+`;
+
+// const TreeDiv = styled.div`
+//   position: absolute;
+//   z-index: 1;
+//   height: 100vh;
+//   // border: solid yellow 2px;
+//   top: 50%;
+//   left: 50%;
+// `;
 
 function TreeActivity({ user }) {
   const [userActivity, setUserActivity] = useState([]);
@@ -39,10 +67,11 @@ function TreeActivity({ user }) {
 
   return (
     <>
-      <h1>Tree Activities</h1>
-      <h2>{treePointsTotal}</h2>
+      <h1 style={{ color: '#fff' }}>{user.firstName}&apos;s Activities</h1>
+      <br />
+      <h2 style={{ color: '#fff' }}>Total Points: {treePointsTotal}</h2>
       <div>
-        <Button onClick={toggle}>Add An Activity</Button>
+        <ActivityButtons onClick={toggle}>Add An Activity</ActivityButtons>
         <Modal isOpen={modal} toggle={toggle}>
           <ModalHeader toggle={toggle}>
             Add a Green Activity
@@ -56,28 +85,19 @@ function TreeActivity({ user }) {
               setModal={setModal}
             />
           <hr />
+            <h6>Point Options:</h6>
             <ul>
-              <li>1 Point</li>
-              <li>2 Points</li>
-              <li>3 Points</li>
-              <li>4 Points</li>
-              <li>5 Points</li>
+              <li>1 Point - Quick and Simple</li>
+              <li>2 Points - Takes a little more time</li>
+              <li>3 Points - Done often but infrequently</li>
+              <li>4 Points - Starting to become habit</li>
+              <li>5 Points - Done consistently or very impactful</li>
             </ul>
           </ModalBody>
           <ModalFooter>
-            <Button color='success' onClick={toggle}>Close</Button>
+            <ActivityButtons onClick={toggle}>Close</ActivityButtons>
           </ModalFooter>
         </Modal>
-      </div>
-      <div>
-        {userActivity.length <= 0 ? 'Add an Activity, Earn Points, See what grows' : userActivity.map((activityInfo) => (
-          <TreeActivityCard
-            key={activityInfo.id}
-            {...activityInfo}
-            user={user}
-            setUserActivity={setUserActivity}
-          />
-        ))}
       </div>
       <div>
         {wholeTreePicture.map((picInfo) => {
@@ -91,6 +111,16 @@ function TreeActivity({ user }) {
           }
         })}
       </div>
+      <CardDiv>
+        {userActivity.length <= 0 ? 'Add an Activity, Earn Points, See what grows' : userActivity.map((activityInfo) => (
+          <TreeActivityCard
+            key={activityInfo.id}
+            {...activityInfo}
+            user={user}
+            setUserActivity={setUserActivity}
+          />
+        ))}
+      </CardDiv>
     </>
   );
 }

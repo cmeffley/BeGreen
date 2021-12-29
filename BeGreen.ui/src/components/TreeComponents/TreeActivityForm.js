@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
-  Button,
   Form,
   Label,
   Input,
+  Toast,
+  ToastBody,
 } from 'reactstrap';
+import { Button, Icon } from 'semantic-ui-react';
 import { createNewActivity, updateActivity } from '../../helpers/data/TreeData';
 
+const ToastDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const ActivityButtons = styled.button`
+  background-color: #BC4749;
+  padding: 7px 10px;
+  margin: 3px;
+  color: #fff;
+  border-radius: 10px;
+`;
 function TreeActivityForm({
   formTitle,
   user,
@@ -23,6 +38,7 @@ function TreeActivityForm({
     totalTreePoints: Number(activityInfo?.totalTreePoints) || Number(''),
     userId: activityInfo?.userId || user.id
   });
+  const [toast, setToast] = useState(false);
 
   const handleInputChange = (e) => {
     setAddActivity((prevState) => ({
@@ -34,7 +50,7 @@ function TreeActivityForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (addActivity.treePoints > 5) {
-      window.alert('Points cannot be greater than 5');
+      setToast(true);
     } else if (activityInfo.id) {
       updateActivity(addActivity.id, addActivity).then((response) => setUserActivity(response));
     } else {
@@ -45,8 +61,19 @@ function TreeActivityForm({
 
   return (
     <div>
+      <ToastDiv>
+        { toast
+          ? <Toast>
+          <Button inverted icon compact floated='right' onClick={() => setToast(!toast)}>
+            <Icon name='close'/>
+          </Button>
+          <ToastBody>
+            {'Points cannot be greater than 5'}
+          </ToastBody>
+        </Toast>
+          : ''}
+      </ToastDiv>
       <h1>{formTitle}</h1>
-      {activityInfo.id}
       <Form
         autoComplete='off'
         onSubmit={handleSubmit}
@@ -68,7 +95,7 @@ function TreeActivityForm({
             onChange={handleInputChange}
           />
           <br />
-        <Button color='success' type='submit'>Submit</Button>
+        <ActivityButtons type='submit'>Submit</ActivityButtons>
       </Form>
     </div>
   );
@@ -81,7 +108,7 @@ TreeActivityForm.propTypes = {
   userActivity: PropTypes.array,
   setUserActivity: PropTypes.func,
   setModal: PropTypes.func,
-  revealTree: PropTypes.func
+  revealTree: PropTypes.func,
 };
 
 export default TreeActivityForm;

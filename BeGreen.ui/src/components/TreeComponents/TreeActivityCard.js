@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
   Card,
   CardTitle,
@@ -8,13 +9,19 @@ import {
 } from 'reactstrap';
 import TreeActivityForm from './TreeActivityForm';
 
+const CardDiv = styled.div`
+  border: solid black 1px;
+  margin: 10px 15px 10px 15px;
+`;
+
 function TreeActivityCard({ setUserActivity, ...activityInfo }) {
   const [editActivity, setEditActivity] = useState(false);
 
   return (
-    <div>
-      <Card>
+    <CardDiv>
+      <Card className='activityCard'>
         <CardTitle>{activityInfo.greenActivity}</CardTitle>
+        <CardTitle>{activityInfo.treePoints}</CardTitle>
         {
         editActivity && <TreeActivityForm
           formTitle={'Edit Activity'}
@@ -24,7 +31,7 @@ function TreeActivityCard({ setUserActivity, ...activityInfo }) {
           />
         }
       </Card>
-    </div>
+    </CardDiv>
   );
 }
 
