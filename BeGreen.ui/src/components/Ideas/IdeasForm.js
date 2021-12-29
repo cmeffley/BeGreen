@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
-  Button,
   Form,
   Input,
 } from 'reactstrap';
+import RegularButtons from '../../styles/RegularButtons';
 import { addNewIdea, updateIdea } from '../../helpers/data/IdeasData';
 
 const FormDiv = styled.div`
   margin: 20px auto;
   width: 50%;
-  // text-align: center;
 `;
 
 function IdeasForm({
@@ -80,7 +79,7 @@ function IdeasForm({
           onChange={handleInputChange}
         />
         <br />
-        <Button type='submit'>Submit</Button>
+        <RegularButtons type='submit'>Submit</RegularButtons>
       </Form>
       </FormDiv>
     </div>

@@ -4,7 +4,23 @@
 body {
   margin: 0;
   background-color: #386641 !important;
-  // color: #F2E8CF !important
+}
+
+.navigation {
+  background-color: black;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.explain {
+  display: flex;
+  flex-flow: row wrap;
+  // justify-content: center;
+  height: 20vh;
+  width: 50%;
+  border: solid hotpink 2px; 
 }
 
 .quizCard {
@@ -51,5 +67,5 @@ body {
 .feed {
   background-color: #6A994E !important;
   border: solid #A7C957 2px;
-  width: 50%;
+  width: 55%;
 }

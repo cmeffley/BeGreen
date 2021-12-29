@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
+import RegularButtons from '../../styles/RegularButtons';
 import IdeasFeed from '../../components/Ideas/IdeasFeed';
 import IdeasForm from '../../components/Ideas/IdeasForm';
 import { getAllIdeas } from '../../helpers/data/IdeasData';
@@ -13,7 +13,10 @@ function IdeasView({ user }) {
   useEffect(() => {
     const isMounted = true;
     if (isMounted) {
-      getAllIdeas().then(setAllIdeas);
+      getAllIdeas().then((response) => {
+        const sortedByDate = response.sort((a, b) => Date.parse(a.datePosted) - Date.parse(b.datePosted));
+        setAllIdeas(sortedByDate);
+      });
     }
   }, [isSubmitted]);
 
@@ -23,9 +26,9 @@ function IdeasView({ user }) {
 
   return (
     <div>
-      <h1 style={{ color: '#fff' }}>Share Your Ideas!</h1>
+      <h2 style={{ color: '#fff' }}>Share your green practices or anything that can help out!</h2>
       <br />
-      <Button primary onClick={openAddClick}>Add A New Idea</Button>
+      <RegularButtons primary onClick={openAddClick}>Add A New Idea</RegularButtons>
       <br />
       <>
       { createNewIdea

@@ -1,8 +1,25 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import {
+  Modal,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap';
 import { Feed, Button, Icon } from 'semantic-ui-react';
+import RegularButtons from '../../styles/RegularButtons';
 import IdeasForm from './IdeasForm';
 import { deleteIdea } from '../../helpers/data/IdeasData';
+
+const FeedImg = styled.img`
+  height: 400px;
+  width: auto;
+`;
+
+const FeedDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 function IdeasFeed({
   user,
@@ -12,6 +29,8 @@ function IdeasFeed({
   ...ideasInfo
 }) {
   const [editIdea, setEditIdea] = useState(false);
+  const [modal2, setModal2] = useState(false);
+  const toggle2 = () => setModal2(!modal2);
 
   const handleClick = (type) => {
     switch (type) {
@@ -28,21 +47,33 @@ function IdeasFeed({
 
   return (
     <div>
+      <>
+        <Modal isOpen={modal2} toggle={toggle2}>
+          <ModalBody>
+            {<FeedImg src={ideasInfo.image}/>}
+          </ModalBody>
+          <ModalFooter>
+            <RegularButtons onClick={toggle2}>Close</RegularButtons>
+          </ModalFooter>
+        </Modal>
+      </>
+      <br />
+      <FeedDiv>
       <Feed size='large' className='feed'>
         <Feed.Event>
           <Feed.Label><Icon name='comment outline'/></Feed.Label>
           <Feed.Content>
-            <Feed.User>{ideasInfo.userName}</Feed.User>
             <Feed.Summary>
+              {ideasInfo.userName}
               <Feed.Extra text>
                 {ideasInfo.sharedIdea}
               </Feed.Extra>
             </Feed.Summary>
             <Feed.Extra images>
-              {<img src={ideasInfo.image}/>}
+             <a onClick={toggle2}>{<img src={ideasInfo.image}/>}</a>
             </Feed.Extra>
             <Feed.Meta>
-            <Feed.Date>{ideasInfo.datePosted}</Feed.Date>
+              <Feed.Date>{ideasInfo.datePosted}</Feed.Date>
             </Feed.Meta>
           </Feed.Content>
           </Feed.Event>
@@ -61,6 +92,7 @@ function IdeasFeed({
             />
           }
       </Feed>
+      </FeedDiv>
       <br />
     </div>
   );
