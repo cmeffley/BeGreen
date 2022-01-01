@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import {
   Card,
   CardTitle,
-  // CardText,
-  // CardBody,
 } from 'reactstrap';
 import TreeActivityForm from './TreeActivityForm';
 

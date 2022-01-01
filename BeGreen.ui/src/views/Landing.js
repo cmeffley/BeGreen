@@ -3,19 +3,28 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import { signInUser, signOutUser } from '../helpers/auth';
+import greenlogo from '../assets/greenlogo.png';
 
 function Landing({ user }) {
   const history = useHistory();
 
   return (
     <>
-      <h1>It&apos;s Not Easy Being Green</h1>
-      <h6>Help the World, take a quiz to see if you&apos;re everyday habits are helpful or harmful.</h6>
-      <h6>Sign In to share Green Ideas with others and use those ideas in the activities area to create something!</h6>
+      <h1 style={{ color: '#fff' }}>It&apos;s Not Easy Being Green</h1>
+      <br />
       <div>
-        { user ? <Button inverted color='red' onClick={signOutUser}>Sign Out</Button>
-          : <Button inverted color='teal' onClick={signInUser}>Sign In</Button>}
-        <Button inverted color='green' onClick={() => history.push('/quiz')}>Take Quiz</Button>
+       <a href='https://www.youtube.com/watch?v=51BQfPeSK8k'> <img src={greenlogo} /> </a>
+      </div>
+      <br />
+      <h5 style={{ color: '#fff' }}>The World is changing, and if we all do a little bit, we can have a massive impact.</h5>
+      <h5 style={{ color: '#fff' }}>Take the quiz to see how impactful you are, or
+      sign in and share ideas with others willing to help out.</h5>
+      <h5 style={{ color: '#fff' }}>Then take those ideas and add them to your activities, and see what grows!</h5>
+      <br />
+      <div>
+        { user ? <Button color='red' onClick={signOutUser}>Sign Out</Button>
+          : <Button color='teal' onClick={signInUser}>Sign In</Button>}
+        <Button color='green' onClick={() => history.push('/quiz')}>Take Quiz</Button>
       </div>
     </>
   );

@@ -9,6 +9,7 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import RegularButtons from '../../styles/RegularButtons';
 import TreeActivityCard from '../../components/TreeComponents/TreeActivityCard';
 import TreeActivityForm from '../../components/TreeComponents/TreeActivityForm';
 import TreePicture from '../../components/TreeComponents/TreePicture';
@@ -21,31 +22,7 @@ import {
 const CardDiv = styled.div`
   display: flex;
   flex-flow: row wrap;
-  // justify-content: space-evenly;
-  // height: 225vh;
-  // width: 115vh;
-  // position: relative;
-  // z-index: 2;
-  // border: solid pink 2px;
 `;
-
-const ActivityButtons = styled.button`
-  background-color: #BC4749;
-  padding: 7px 10px;
-  margin: 3px;
-  color: #fff;
-  border-radius: 10px;
-`;
-
-// const TreeDiv = styled.div`
-//   position: absolute;
-//   z-index: 1;
-//   height: 100vh;
-//   // border: solid yellow 2px;
-//   top: 50%;
-//   left: 50%;
-// `;
-
 function TreeActivity({ user }) {
   const [userActivity, setUserActivity] = useState([]);
   const [wholeTreePicture, setWholeTreePicture] = useState([]);
@@ -71,7 +48,7 @@ function TreeActivity({ user }) {
       <br />
       <h2 style={{ color: '#fff' }}>Total Points: {treePointsTotal}</h2>
       <div>
-        <ActivityButtons onClick={toggle}>Add An Activity</ActivityButtons>
+        <RegularButtons onClick={toggle}>Add An Activity</RegularButtons>
         <Modal isOpen={modal} toggle={toggle}>
           <ModalHeader toggle={toggle}>
             Add a Green Activity
@@ -95,10 +72,11 @@ function TreeActivity({ user }) {
             </ul>
           </ModalBody>
           <ModalFooter>
-            <ActivityButtons onClick={toggle}>Close</ActivityButtons>
+            <RegularButtons onClick={toggle}>Close</RegularButtons>
           </ModalFooter>
         </Modal>
       </div>
+      <br />
       <div>
         {wholeTreePicture.map((picInfo) => {
           if (treePointsTotal >= picInfo.revealPoints) {

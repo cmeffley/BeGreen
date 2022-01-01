@@ -19,7 +19,7 @@ const NavBar = ({ user }) => {
 
   return (
     <div>
-      <Navbar color="dark" dark expand="md">
+      <Navbar className='navigation' dark expand="md">
         <NavbarBrand href="/"><Icon name='tree'/></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -29,11 +29,11 @@ const NavBar = ({ user }) => {
             </NavItem>
           { user
             && <>
-            <NavItem>
-              <Link className="nav-link" to="/treeActivity">Activities</Link>
+             <NavItem>
+              <Link className="nav-link" to="/ideas">Share Ideas</Link>
             </NavItem>
             <NavItem>
-              <Link className="nav-link" to="/ideas">Share Ideas</Link>
+              <Link className="nav-link" to="/treeActivity">My Activities</Link>
             </NavItem>
             </>
           }
