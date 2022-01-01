@@ -22,23 +22,7 @@ import {
 const CardDiv = styled.div`
   display: flex;
   flex-flow: row wrap;
-  // justify-content: space-evenly;
-  // height: 225vh;
-  // width: 115vh;
-  // position: relative;
-  // z-index: 2;
-  // border: solid pink 2px;
 `;
-
-// const TreeDiv = styled.div`
-//   position: absolute;
-//   z-index: 1;
-//   height: 100vh;
-//   // border: solid yellow 2px;
-//   top: 50%;
-//   left: 50%;
-// `;
-
 function TreeActivity({ user }) {
   const [userActivity, setUserActivity] = useState([]);
   const [wholeTreePicture, setWholeTreePicture] = useState([]);
