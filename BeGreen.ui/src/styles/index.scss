@@ -2,11 +2,64 @@
 @import 'variables';
 
 body {
-  background-color: $favColor;
+  margin: 0;
+  background-color: #386641 !important;
+}
+
+.navigation {
+  background-color: black;
+}
+
+.nav-link {
+  color: #fff !important;
+  &:hover {
+    color: #A7C957 !important;
+  }
+}
+
+.quizCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25rem;
+  height: 15rem;
+  font-size: large;
+  font-weight: bold;
+  background-color: #F2E8CF !important;
+  box-shadow: 4px 4px 5px black;
+}
+
+.answerCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 18rem;
+  height: 18rem;
+  font-size: large;
+  font-weight: bold;
+  background-color: #A7C957 !important;
+  box-shadow: 4px 4px 5px black;
+}
+
+.activityCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 11rem;
+  height: 11rem;
+  padding: 1px;
+  font-size: large;
+  font-weight: bold;
+  background-color: #F2E8CF !important;
 }
 
 .treePictureContainer {
-  border: 1px red solid;
   height: auto;
   width: auto;
+}
+
+.feed {
+  background-color: #6A994E !important;
+  border: solid #A7C957 2px;
+  width: 55%;
 }
