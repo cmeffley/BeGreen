@@ -46,10 +46,16 @@ function IdeasForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (ideasInfo.id) {
-      updateIdea(newIdea.id, newIdea).then(setAllIdeas);
+      updateIdea(newIdea.id, newIdea).then((response) => {
+        const sortedByDate = response.sort((a, b) => Date.parse(a.datePosted) - Date.parse(b.datePosted));
+        setAllIdeas(sortedByDate);
+      });
       setEditIdea(false);
     } else {
-      addNewIdea(newIdea).then(setAllIdeas);
+      addNewIdea(newIdea).then((response) => {
+        const sortedByDate = response.sort((a, b) => Date.parse(a.datePosted) - Date.parse(b.datePosted));
+        setAllIdeas(sortedByDate);
+      });
       setCreateNewIdea(!createNewIdea);
     }
     setIsSubmitted(!isSubmitted);

@@ -12,6 +12,9 @@ body {
 
 .nav-link {
   color: #fff !important;
+  &:hover {
+    color: #A7C957 !important;
+  }
 }
 
 .quizCard {

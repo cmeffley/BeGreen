@@ -92,6 +92,7 @@ function TreeActivity({ user }) {
           </ModalFooter>
         </Modal>
       </div>
+      <br />
       <div>
         {wholeTreePicture.map((picInfo) => {
           if (treePointsTotal >= picInfo.revealPoints) {

@@ -26,7 +26,7 @@ function IdeasView({ user }) {
 
   return (
     <div>
-      <h2 style={{ color: '#fff' }}>Share your green practices or anything that can help out!</h2>
+      <h2 style={{ color: '#fff' }}>Share your green practices, meetups or ideas!</h2>
       <br />
       <RegularButtons primary onClick={openAddClick}>Add A New Idea</RegularButtons>
       <br />

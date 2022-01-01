@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import { signInUser, signOutUser } from '../helpers/auth';
-import GreenSmall from '../assets/GreenSmall.png';
+import greenlogo from '../assets/greenlogo.png';
 
 function Landing({ user }) {
   const history = useHistory();
@@ -13,7 +13,7 @@ function Landing({ user }) {
       <h1 style={{ color: '#fff' }}>It&apos;s Not Easy Being Green</h1>
       <br />
       <div>
-        <img src={GreenSmall} />
+       <a href='https://www.youtube.com/watch?v=51BQfPeSK8k'> <img src={greenlogo} /> </a>
       </div>
       <br />
       <h5 style={{ color: '#fff' }}>The World is changing, and if we all do a little bit, we can have a massive impact.</h5>
