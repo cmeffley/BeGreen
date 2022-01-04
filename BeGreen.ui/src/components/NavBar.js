@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Collapse,
@@ -16,6 +16,17 @@ const NavBar = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const history = useHistory();
+
+  const signOutToLanding = () => {
+    signOutUser();
+    history.push('/');
+  };
+
+  const signInAndGo = () => {
+    signInUser();
+    history.push('/');
+  };
 
   return (
     <div>
@@ -44,8 +55,8 @@ const NavBar = ({ user }) => {
           { user !== null
             && <div className='auth-btn-container'>
                 {
-                  user ? <Icon name='sign-out' size='large' inverted color='grey' onClick={signOutUser}></Icon>
-                    : <Icon name='sign-in' size='large' inverted color='grey' onClick={signInUser}></Icon>
+                  user ? <Icon name='sign-out' size='large' inverted color='grey' onClick={signOutToLanding}></Icon>
+                    : <Icon name='sign-in' size='large' inverted color='grey' onClick={signInAndGo}></Icon>
                 }
               </div>
             }
