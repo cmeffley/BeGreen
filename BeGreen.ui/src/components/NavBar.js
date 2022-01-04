@@ -27,6 +27,9 @@ const NavBar = ({ user }) => {
             <NavItem>
               <Link className="nav-link" to="/quiz">Quiz</Link>
             </NavItem>
+            <NavItem>
+              <Link className="nav-link" to="/resources">Resources</Link>
+            </NavItem>
           { user
             && <>
              <NavItem>

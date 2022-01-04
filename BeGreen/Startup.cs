@@ -37,6 +37,7 @@ namespace BeGreen
             services.AddTransient<TreeActivityRepository>();
             services.AddTransient<TreeRepository>();
             services.AddTransient<UsersRepository>();
+            services.AddTransient<ResourcesRepository>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
            .AddJwtBearer(options =>
