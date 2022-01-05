@@ -91,7 +91,7 @@ function Quiz() {
 
   const signInAndGo = () => {
     signInUser();
-    history.push('/');
+    history.push('/resources');
   };
 
   return (
