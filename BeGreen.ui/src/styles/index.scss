@@ -63,3 +63,24 @@ body {
   border: solid #A7C957 2px;
   width: 55%;
 }
+
+.resourceCard {
+  height: 25rem;
+  width: 20rem;
+  margin: 10px;
+  font-weight: bold;
+  background-color: #F2E8CF !important;
+}
+
+.resourceName {
+  font-size: large;
+  font-weight: bolder;
+}
+
+.resourceImage {
+  max-height: 175px;
+  min-height: 75px;
+  max-width: 175px;
+  min-width: 75px;
+  border: solid black 2px;
+}
