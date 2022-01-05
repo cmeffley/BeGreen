@@ -11,7 +11,8 @@ function IdeasView({ user }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    if (user !== false) {
+    const isMounted = true;
+    if (isMounted) {
       getAllIdeas().then((response) => {
         const sortedByDate = response.sort((a, b) => Date.parse(a.datePosted) - Date.parse(b.datePosted));
         setAllIdeas(sortedByDate);
