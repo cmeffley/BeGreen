@@ -22,6 +22,7 @@ This application is for a user to see how environmentally friendly they are, the
 ### Unauthenticated User
 - The user is able to take a quiz to see how environmentally friendly they are
 - When the quiz is completed, the user can retake the quiz or sign in for more features
+- The user can view environmental organizations
 
 ### Authenticated User
 - The user can take a quiz to see how environmentally friendly they are. They can retake the quiz if they wish
@@ -31,7 +32,7 @@ This application is for a user to see how environmentally friendly they are, the
 ### Screenshot
 ![2022-01-01 (2)](https://user-images.githubusercontent.com/76795299/147860058-da2faa0f-8957-4270-a722-cc9710e9cb8c.png)
 
-### Loom Walkthrough Video Coming Soon!
+### [Loom Walkthrough Video](https://www.loom.com/share/3d4cb65415664f7c8652b3ff8c2d8387)
 
 ### Contributor
 [Chris Meffley](https://github.com/cmeffley)
