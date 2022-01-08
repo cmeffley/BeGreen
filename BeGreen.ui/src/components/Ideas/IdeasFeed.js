@@ -13,7 +13,7 @@ import { deleteIdea } from '../../helpers/data/IdeasData';
 
 const FeedImg = styled.img`
   height: 400px;
-  width: auto;
+  width: 425px;
 `;
 
 const FeedDiv = styled.div`
