@@ -32,7 +32,7 @@ This application is for a user to see how environmentally friendly they are, the
 ### Screenshot
 ![2022-01-01 (2)](https://user-images.githubusercontent.com/76795299/147860058-da2faa0f-8957-4270-a722-cc9710e9cb8c.png)
 
-### [Loom Walkthrough Video](https://www.loom.com/share/3d4cb65415664f7c8652b3ff8c2d8387)
+### [Loom Walkthrough Video](https://www.loom.com/share/fd73aa08f8ce4723872ef5d1db6a2a0c)
 
 ### Contributor
 [Chris Meffley](https://github.com/cmeffley)
