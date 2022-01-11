@@ -12,7 +12,7 @@ This application is for a user to see how environmentally friendly they are, the
 
 ### [Wireframe](https://www.figma.com/file/mHedyp20niqKJ5XHKbNI8N/BeGreen?node-id=0%3A1)
 
-### [Peoject Board](https://github.com/cmeffley/BeGreen/projects/1)
+### [Project Board](https://github.com/cmeffley/BeGreen/projects/1)
 
 ## Users
 - A User is someone who is interested in Environmentally friendly practices and sharing them with others
